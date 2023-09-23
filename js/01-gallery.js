@@ -11,7 +11,7 @@ container.addEventListener('click', handlerItemClick);
 
 function createMarkup(arr) {
     return arr.map((id, preview, original, description) => {
-        return `<li data-id="${id}" class="gallery__item gallery__image js-list-item">
+        return `<li class="gallery__item gallery__image js-list-item">
         <img src="${original}" alt="${description}"/>
         </li>`
     }).join('');    
@@ -22,4 +22,4 @@ function handlerItemClick(event) {
     
 }
 
-// console.log(galleryItems);
+console.log(galleryItems);
