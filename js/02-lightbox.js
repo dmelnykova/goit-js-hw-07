@@ -19,31 +19,9 @@ function createMarkup(galleryItems) {
     }).join('');  
 }
     
-const lightboxModal = new SimpleLightbox('.gallery a', {
-    captionsData: 'alt',
-    optionsPosition: 'bottom',
-    captionDelay: 250,
+const lightboxModal = new SimpleLightbox('.gallery a',
+    {
+        captionsData: 'alt',
+        optionsPosition: 'bottom',
+        captionDelay: 250,
 });
-
-
-// list.addEventListener('click', handleClick);
-
-// function handleClick(event) {
-//     event.preventDefault();
-//     if (event.target.nodeName !== "IMG") {
-//         return;
-//     }
-//     const instance = basicLightbox.create(`
-//     <img src="${event.target.dataset.source}" alt="${event.target.alt}"/>
-//     `, {
-//         onShow: () => { document.addEventListener("keydown", onEscPress) },
-//         onClose: () => { document.removeEventListener("keydown", onEscPress) },
-//     });
-//     instance.show();
-
-//     function onEscPress(event) {
-//         if (event.code === "Escape") {
-//             instance.close();
-//         }
-//     };
-// }
