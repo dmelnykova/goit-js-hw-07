@@ -8,8 +8,6 @@ const markup = createMarkup(galleryItems);
 
 list.insertAdjacentHTML('beforeend', markup);
 
-list.addEventListener('click', handlerClick);
-
 function createMarkup(galleryItems) {
     return galleryItems
         .map(({ preview, original, description }) => {
@@ -21,23 +19,24 @@ function createMarkup(galleryItems) {
     }).join('');  
     }
 
-    //click
+list.addEventListener('click', handleClick);
 
-function handlerClick(event) {
+function handleClick(event) {
     event.preventDefault();
     if (event.target.nodeName !== "IMG") {
-        return
+        return;
     }
+    const instance = basicLightbox.create(`
+    <img src="${event.target.dataset.source}" alt="${event.target.alt}"/>
+    `, {
+        onShow: () => { document.addEventListener("keydown", onEscPress) },
+        onClose: () => { document.removeEventListener("keydown", onEscPress) },
+    });
+    instance.show();
+
+    function onEscPress(event) {
+        if (event.code === "Escape") {
+            instance.close();
+        }
+    };
 }
-
-    //modal
-// const instance = basicLightbox.create(`
-//     <img src="${event.target.dataset.source}" alt="${event.target.alt}"/>
-// `, {
-//     onShow: () => {}
-// })
-
-// instance.show()
-    //escape
-
-// console.log(galleryItems);
